@@ -1,0 +1,26 @@
+{
+  "name": "dev",
+  "version": "1.0.0",
+  "description": "Developer version of meindica",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/formandos/dev.git"
+  },
+  "keywords": [
+    "internship"
+  ],
+  "author": "randy quindai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/formandos/dev/issues"
+  },
+  "homepage": "https://github.com/formandos/dev#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1"
+  }
+}
