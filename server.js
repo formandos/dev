@@ -7,5 +7,6 @@ app.get('/', function(req, res){
 
 });
 
+app.get('/signup.html',);
 
-
+app.get('/login.html',);
