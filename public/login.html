@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Página de login</title>
+        <link rel="stylesheet" href = "maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+<script src = "maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+
+<style>
+.flex{
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center; 
+}
+
+.itmHolder {
+  margin-top: 15px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.butn {
+        display: inline-block;
+        position: relative;
+        background: #d934ce;
+        background-image: -webkit-linear-gradient(top, #d934ce, #b82b92);
+        background-image: -moz-linear-gradient(top, #d934ce, #b82b92);
+        background-image: -ms-linear-gradient(top, #d934ce, #b82b92);
+        background-image: -o-linear-gradient(top, #d934ce, #b82b92);
+        background-image: linear-gradient(to bottom, #d934ce, #b82b92);
+        -webkit-border-radius: 9;
+        -moz-border-radius: 9;
+        border-radius: 9px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 24px;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+    }
+
+    .butn:hover {
+        position: relative;
+        background: #fc3cb9;
+        background-image: -webkit-linear-gradient(top, #fc3cb9, #d934ad);
+        background-image: -moz-linear-gradient(top, #fc3cb9, #d934ad);
+        background-image: -ms-linear-gradient(top, #fc3cb9, #d934ad);
+        background-image: -o-linear-gradient(top, #fc3cb9, #d934ad);
+        background-image: linear-gradient(to bottom, #fc3cb9, #d934ad);
+        text-decoration: none;
+    }
+</style>
+        
+    </head>
+    <body>
+            <div class="itemHolder"><a href="#" class="butn" onclick="gmailSignin()" >Login with Google</a></div>
+            <div class="itemHolder"><a href="#" class="butn" onclick="fbSignin()">Login with Facebook</a></div>
+<span class="signup">Não tem uma conta?<a href="signup.html" id = "signup">Inscreva-se aqui.</a></span>
+       
+       <script>
+                // Initialize Firebase
+                var config = {
+                    apiKey: "AIzaSyALw-fSW0DxD9CpcFHM8QJNnhcjgencSaQ",
+                    authDomain: "me-indica-2722a.firebaseapp.com",
+                    databaseURL: "https://me-indica-2722a.firebaseio.com",
+                    projectId: "me-indica-2722a",
+                    storageBucket: "",
+                    messagingSenderId: "625746575977",
+                };
+                firebase.initializeApp(config);
+
+                const auth = firebase.auth();
+
+                var login = document.getElementById('login');
+                var logout = document.getElementById('logout');
+                var facebook = document.getElementById('facebook');
+                var gmail = document.getElementById('google');
+                function fbSignin(){
+                    var provider = new firebase.auth.FacebookAuthProvider();
+
+                    firebase.auth().signInWithPopup(provider).then(function(result) {
+
+                        var token = result.credential.acesstoken;
+
+                        var user = result.user;
+
+                        console.log(token);
+                        console.log(user);
+                    }).catch(function(error) {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        var email = error.email;
+                        var credential = error.credential;
+                    });
+                }
+
+                function gmailSignin(){
+                    console.log('logging with google');
+                    var provider = new firebase.auth.GoogleAuthProvider();
+                    firebase.auth().signInWithPopup(provider).then(function(result) {
+
+                    var token = result.credential.acesstoken;
+
+                    var user = result.user;
+
+                }).catch(function(error) {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    var email = error.email;
+                    var credential = error.credential;
+                });
+            }
+
+
+                
+            </script>
+    </body>
+</html>
